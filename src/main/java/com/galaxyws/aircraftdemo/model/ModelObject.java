@@ -3,7 +3,6 @@ package com.galaxyws.aircraftdemo.model;
 import java.io.File;
 import java.io.IOException;
 
-import com.galaxyws.aircraftdemo.util.Constant;
 import com.galaxyws.aircraftdemo.util.OBJLoader;
 
 public abstract class ModelObject extends BaseObject {
@@ -25,7 +24,7 @@ public abstract class ModelObject extends BaseObject {
 
 	public void parseModelFile(String resource) {
 		String fileName = ModelObject.class.getClassLoader()
-				.getResource(Constant.STRAIGHT_LINE_BULLET_MODEL).toString();
+				.getResource(resource).toString();
 		File file = new File(fileName);
 		if (!file.exists()) {
 			// TODO need to record log

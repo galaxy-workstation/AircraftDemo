@@ -15,6 +15,7 @@ public class JetType extends PlaneType {
 		this.setHeight(Constant.JET_PLANE_MODE_HEIGHT);
 		this.setWidth(Constant.JET_PLANE_MODE_WIDTH);
 		this.setFireInterval(Constant.JET_PLANE_FIRE_INTERVAL);
+		this.parseModelFile(Constant.JET_PLANE_MODEL);
 	}
 
 	public static PlaneType getInstance() {
