@@ -18,25 +18,25 @@ public class Scene {
 
 	public Scene() {
 		renderer = new Renderer();
+		background = new Background();
 	}
 
 	private void update() {
 
 	}
 
-
 	public void display(GLAutoDrawable drawable) {
 		// TODO Auto-generated method stub
 		update();
-		
-		renderer.render(drawable);
-	}
 
+		//renderer.render(drawable);
+		renderer.renderModel(drawable, background.model);
+	}
 
 	public void init(GLAutoDrawable drawable) {
 
 		renderer.init(drawable); // get the OpenGL graphics
-													// context);
+									// context);
 	}
 
 	public void reshape(GLAutoDrawable drawable, int x, int y, int width,
