@@ -1,33 +1,36 @@
 package com.galaxyws.aircraftdemo.model;
 
-public class Point {
+import java.io.Serializable;
 
-	private int x;
-	private int y;
+public class Point implements Serializable {
+
+	private static final long serialVersionUID = -5974724053444408572L;
+	private float x;
+	private float y;
 
 	public Point() {
 		this(0, 0);
 	}
 
-	public Point(int x, int y) {
+	public Point(float x, float y) {
 		super();
 		this.x = x;
 		this.y = y;
 	}
 
-	public int getX() {
+	public float getX() {
 		return x;
 	}
 
-	public void setX(int x) {
+	public void setX(float x) {
 		this.x = x;
 	}
 
-	public int getY() {
+	public float getY() {
 		return y;
 	}
 
-	public void setY(int y) {
+	public void setY(float y) {
 		this.y = y;
 	}
 
@@ -35,8 +38,8 @@ public class Point {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + x;
-		result = prime * result + y;
+		result = prime * result + Float.floatToIntBits(x);
+		result = prime * result + Float.floatToIntBits(y);
 		return result;
 	}
 
@@ -49,9 +52,9 @@ public class Point {
 		if (getClass() != obj.getClass())
 			return false;
 		Point other = (Point) obj;
-		if (x != other.x)
+		if (Float.floatToIntBits(x) != Float.floatToIntBits(other.x))
 			return false;
-		if (y != other.y)
+		if (Float.floatToIntBits(y) != Float.floatToIntBits(other.y))
 			return false;
 		return true;
 	}

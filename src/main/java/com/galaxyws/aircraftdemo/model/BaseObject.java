@@ -1,14 +1,14 @@
 package com.galaxyws.aircraftdemo.model;
 
-import java.awt.Point;
+import java.io.Serializable;
 import java.util.UUID;
 
-public abstract class BaseObject {
+public abstract class BaseObject implements Serializable {
 
+	private static final long serialVersionUID = -6014724008537678534L;
+	
 	private String id;
-	private Point position;
-	private int life;
-	private VBO model;
+
 
 	public BaseObject() {
 		super();
@@ -23,29 +23,6 @@ public abstract class BaseObject {
 		this.id = id;
 	}
 
-	public Point getPosition() {
-		return position;
-	}
-
-	public void setPosition(Point position) {
-		this.position = position;
-	}
-
-	public int getLife() {
-		return life;
-	}
-
-	public void setLife(int life) {
-		this.life = life;
-	}
-
-	public VBO getModel() {
-		return model;
-	}
-
-	public void setModel(VBO model) {
-		this.model = model;
-	}
 
 	@Override
 	public String toString() {
