@@ -38,7 +38,7 @@ public class Plane extends ActorObject {
 			return null;
 		}
 		for (Bullet bullet : firedBulletList) {
-			bullet.setPosition(this.getPosition());
+			bullet.setPosition(new Point(this.getPosition()));
 		}
 		return firedBulletList;
 	}

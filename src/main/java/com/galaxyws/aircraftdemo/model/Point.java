@@ -17,6 +17,10 @@ public class Point implements Serializable {
 		this.x = x;
 		this.y = y;
 	}
+	
+	public Point(Point point){
+		this(point.getX(), point.getY());
+	}
 
 	public float getX() {
 		return x;
