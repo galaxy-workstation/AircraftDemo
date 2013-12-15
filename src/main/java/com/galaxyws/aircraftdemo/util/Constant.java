@@ -16,7 +16,7 @@ public final class Constant {
 	/**
 	 * Straight line bullet configuration
 	 */
-	public static final String STRAIGHT_LINE_BULLET_MODEL = "com/galaxyws/aircraftdemo/star.obj";
+	public static final String STRAIGHT_LINE_BULLET_MODEL = "com/galaxyws/aircraftdemo/dan.obj";
 	public static final float STRAIGHT_LINE_BULLET_POWER = 5.0f;
 	public static final float STRAIGHT_LINE_BULLET_MOVE_SPEED = 0.1f;
 	public static final float STRAIGHT_LINE_BULLET_MODE_HEIGHT = 0.05f;
@@ -26,7 +26,7 @@ public final class Constant {
 	/**
 	 * Jet Plane configuration
 	 */
-	public static final String JET_PLANE_MODEL = "com/galaxyws/aircraftdemo/star.obj";
+	public static final String JET_PLANE_MODEL = "com/galaxyws/aircraftdemo/ji.obj";
 	public static final float JET_PLANE_MOVE_SPEED = 0.2f;
 	public static final float JET_PLANE_MODE_HEIGHT = 0.1f;
 	public static final float JET_PLANE_MODE_WIDTH = JET_PLANE_MODE_HEIGHT
