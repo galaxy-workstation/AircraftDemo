@@ -10,7 +10,7 @@ public class Background {
 	public Model model;
 	public Background() {
 
-		File f = new File("O:/hippo/AircraftDemo/bin/com/galaxyws/aircraftdemo/star.obj");
+		File f = new File("O:/star.obj");
 		try {
 			model = OBJLoader.loadTexturedModel(f);
 		} catch (IOException e) {

@@ -36,6 +36,7 @@ import java.util.List;
 
 import com.galaxyws.aircraftdemo.util.Vector2f;
 import com.galaxyws.aircraftdemo.util.Vector3f;
+import com.jogamp.opengl.util.texture.Texture;
 
 
 /** @author Oskar */
@@ -47,7 +48,10 @@ public class Model {
     private final List<Face> faces = new ArrayList<Face>();
     private final HashMap<String, Material> materials = new HashMap<String, Material>();
     private boolean enableSmoothShading = true;
+    
+    private String textureFile;
 
+	private Texture texture = null;
 	private VBO vbo = null;
 
     public VBO getVbo() {
@@ -96,7 +100,21 @@ public class Model {
         return materials;
     }
 
-    public static class Material {
+	public Texture getTexture() {
+		return texture;
+	}
+	public void setTexture(Texture texture) {
+		this.texture = texture;
+	}
+
+	public String getTextureFile() {
+		return textureFile;
+	}
+	public void setTextureFile(String textureFile) {
+		this.textureFile = textureFile;
+	}
+
+	public static class Material {
 
         @Override
         public String toString() {

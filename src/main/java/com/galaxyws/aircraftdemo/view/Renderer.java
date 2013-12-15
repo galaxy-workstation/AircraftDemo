@@ -1,26 +1,18 @@
 package com.galaxyws.aircraftdemo.view;
 
-import java.nio.FloatBuffer;
-import java.nio.IntBuffer;
-import java.util.List;
+import static javax.media.opengl.GL.GL_COLOR_BUFFER_BIT;
+import static javax.media.opengl.GL.GL_DEPTH_BUFFER_BIT;
+import static javax.media.opengl.fixedfunc.GLMatrixFunc.GL_MODELVIEW;
+import static javax.media.opengl.fixedfunc.GLMatrixFunc.GL_PROJECTION;
 
 import javax.media.opengl.GL;
 import javax.media.opengl.GL2;
 import javax.media.opengl.GL2ES1;
-import javax.media.opengl.GL2GL3;
-import javax.media.opengl.GL3;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.fixedfunc.GLLightingFunc;
 import javax.media.opengl.glu.GLU;
 
 import com.galaxyws.aircraftdemo.model.Model;
-import com.galaxyws.aircraftdemo.model.Model.Face;
-import com.galaxyws.aircraftdemo.util.Vector3f;
-import com.jogamp.common.nio.Buffers;
-
-import static javax.media.opengl.GL.*; // GL constants
-import static javax.media.opengl.fixedfunc.GLMatrixFunc.GL_MODELVIEW;
-import static javax.media.opengl.fixedfunc.GLMatrixFunc.GL_PROJECTION;
 
 public class Renderer {
 
@@ -30,7 +22,7 @@ public class Renderer {
 
 	public void render(GLAutoDrawable drawable) {
 		GL2 gl = drawable.getGL().getGL2();
-		gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); 
+		gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
 	public void renderModel(GLAutoDrawable drawable, Model model) {
@@ -40,9 +32,10 @@ public class Renderer {
 
 		gl.glTranslatef(aspect / 2, 0.5f, 0.0f);
 		gl.glScalef(0.2f, 0.2f, 0.2f);
-		gl.glColor3f(1.0f, 0.0f, 0.0f);
-
+        
 		Builder.buildModel(drawable, model);
+		model.getTexture().enable(gl);
+		model.getTexture().bind(gl);
 		model.getVbo().render(drawable);
 	}
 
@@ -71,7 +64,6 @@ public class Renderer {
 		gl.glDepthFunc(GL.GL_LEQUAL);
 		gl.glHint(GL2ES1.GL_PERSPECTIVE_CORRECTION_HINT, GL.GL_NICEST);
 		gl.glShadeModel(GLLightingFunc.GL_SMOOTH);
-		gl.glPolygonMode(GL.GL_FRONT_AND_BACK, GL2GL3.GL_LINE);
 
 		glu = new GLU();
 	}
