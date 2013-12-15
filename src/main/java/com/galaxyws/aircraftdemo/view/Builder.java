@@ -79,7 +79,7 @@ public class Builder {
 		GL2 gl = drawable.getGL().getGL2();
 		Texture texture = null;
         try {
-            InputStream stream = new FileInputStream("O:\\star.png");
+            InputStream stream = new FileInputStream(model.getTextureFile());
             TextureData data = TextureIO.newTextureData(gl.getGLProfile(), stream, false, "png");
             texture = TextureIO.newTexture(data);
         }
