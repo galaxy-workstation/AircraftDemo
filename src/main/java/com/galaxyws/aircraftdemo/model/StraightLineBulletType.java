@@ -11,7 +11,10 @@ public class StraightLineBulletType extends BulletType {
 
 	private StraightLineBulletType() {
 		this.setPower(Constant.STRAIGHT_LINE_BULLET_POWER);
+		this.setMoveSpeed(Constant.STRAIGHT_LINE_BULLET_MOVE_SPEED);
 		this.parseModelFile(Constant.STRAIGHT_LINE_BULLET_MODEL);
+		this.setHeight(Constant.STRAIGHT_LINE_BULLET_MODE_HEIGHT);
+		this.setWidth(Constant.STRAIGHT_LINE_BULLET_MODE_WIDTH);
 	}
 
 	@Override

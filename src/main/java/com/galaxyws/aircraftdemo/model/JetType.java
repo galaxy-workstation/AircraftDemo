@@ -26,8 +26,8 @@ public class JetType extends PlaneType {
 
 	@Override
 	public Plane producePlane() {
-		float x = (1.0f - this.getWidth()) / 2;
-		float y = this.getHeight();
+		float x = Constant.MAX_RELATIVE_AXIS / 2;
+		float y = this.getHeight() / 2;
 		return producePlane(new Point(x, y));
 	}
 
