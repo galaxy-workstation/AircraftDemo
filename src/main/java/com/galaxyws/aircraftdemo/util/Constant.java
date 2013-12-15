@@ -2,9 +2,10 @@ package com.galaxyws.aircraftdemo.util;
 
 public final class Constant {
 
+	public static final String TITLE = "JOGL 2.0 Setup (GLCanvas)"; // window's title
 	public static final int CANVAS_WIDTH = 480; // width of the drawable
 	public static final int CANVAS_HEIGHT = 800; // height of the drawable
-	public static final int FPS = 60; // animator's target frames per second
+	public static final int FPS = 120; // animator's target frames per second
 	public static final float RADIO = CANVAS_WIDTH / (float) CANVAS_HEIGHT;
 
 	/*
@@ -18,7 +19,7 @@ public final class Constant {
 	 */
 	public static final String STRAIGHT_LINE_BULLET_MODEL = "com/galaxyws/aircraftdemo/dan.obj";
 	public static final float STRAIGHT_LINE_BULLET_POWER = 5.0f;
-	public static final float STRAIGHT_LINE_BULLET_MOVE_SPEED = 0.1f;
+	public static final float STRAIGHT_LINE_BULLET_MOVE_SPEED = 0.3f;
 	public static final float STRAIGHT_LINE_BULLET_MODE_HEIGHT = 0.05f;
 	public static final float STRAIGHT_LINE_BULLET_MODE_WIDTH = STRAIGHT_LINE_BULLET_MODE_HEIGHT
 			* RADIO;
@@ -31,6 +32,6 @@ public final class Constant {
 	public static final float JET_PLANE_MODE_HEIGHT = 0.1f;
 	public static final float JET_PLANE_MODE_WIDTH = JET_PLANE_MODE_HEIGHT
 			* RADIO;
-	public static final int JET_PLANE_FIRE_INTERVAL = 1000;
+	public static final int JET_PLANE_FIRE_INTERVAL = 200;
 
 }

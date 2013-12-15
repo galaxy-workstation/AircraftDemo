@@ -20,11 +20,6 @@ public class Scene {
 	private Renderer renderer;
 	private List<ActorObject> actorList;
 
-	public static String TITLE = "JOGL 2.0 Setup (GLCanvas)"; // window's title
-	public static final int CANVAS_WIDTH = 480; // width of the drawable
-	public static final int CANVAS_HEIGHT = 800; // height of the drawable
-	public static final int FPS = 60; // animator's target frames per second
-	public static final float RADIO = CANVAS_WIDTH / (float) CANVAS_HEIGHT;
 
 	public Scene() {
 		renderer = new Renderer();
@@ -54,10 +49,10 @@ public class Scene {
 	}
 
 	public void display(GLAutoDrawable drawable) {
-		// renderer.render(drawable);
+		renderer.render(drawable);
 
 		for (ActorObject actorObject : actorList) {
-			renderer.renderModel(drawable, actorObject.getType().getModel());
+			renderer.renderModel(drawable, actorObject.getType().getModel(), actorObject.getPosition(), 0.02f);
 		}
 
 		update();

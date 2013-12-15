@@ -9,6 +9,7 @@ import javax.media.opengl.GLEventListener;
 import javax.media.opengl.awt.GLCanvas;
 
 import com.galaxyws.aircraftdemo.controller.Scene;
+import com.galaxyws.aircraftdemo.util.Constant;
 import com.jogamp.opengl.util.FPSAnimator;
  
 @SuppressWarnings("serial")
@@ -25,10 +26,10 @@ public class Main extends GLCanvas implements GLEventListener {
          public void run() {
             // Create the OpenGL rendering canvas
             GLCanvas canvas = new Main();
-            canvas.setPreferredSize(new Dimension(Scene.CANVAS_WIDTH, Scene.CANVAS_HEIGHT));
+            canvas.setPreferredSize(new Dimension(Constant.CANVAS_WIDTH, Constant.CANVAS_HEIGHT));
  
             // Create a animator that drives canvas' display() at the specified FPS.
-            final FPSAnimator animator = new FPSAnimator(canvas, Scene.FPS, true);
+            final FPSAnimator animator = new FPSAnimator(canvas, Constant.FPS, true);
  
             // Create the top-level container
             final JFrame frame = new JFrame(); // Swing's JFrame or AWT's Frame
@@ -47,7 +48,7 @@ public class Main extends GLCanvas implements GLEventListener {
                   }.start();
                }
             });
-            frame.setTitle(Scene.TITLE);
+            frame.setTitle(Constant.TITLE);
             frame.pack();
             frame.setVisible(true);
             animator.start(); // start the animation loop

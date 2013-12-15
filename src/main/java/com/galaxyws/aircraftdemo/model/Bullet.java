@@ -6,6 +6,8 @@ public class Bullet extends ActorObject {
 
 	private float direction;
 
+	private Point originalPos;
+
 	Bullet(BulletType type) {
 		this.setType(type);
 	}
@@ -26,6 +28,10 @@ public class Bullet extends ActorObject {
 
 	@Override
 	public void moveTo(Point pos) {
+		if (originalPos == null) {
+			originalPos = new Point(getPosition());
+		}
+
 		Point currentPos = this.getPosition();
 		float xSpeed = (float) (this.getType().getMoveSpeed() * Math.cos(this
 				.getDirection()));
@@ -33,8 +39,8 @@ public class Bullet extends ActorObject {
 				.getDirection()));
 		float timeChunk = (System.currentTimeMillis() - this.getCreateTime()) / 1000.0f;
 
-		float x = currentPos.getX() + xSpeed * timeChunk;
-		float y = currentPos.getY() + ySpeed * timeChunk;
+		float x = originalPos.getX() + xSpeed * timeChunk;
+		float y = originalPos.getY() + ySpeed * timeChunk;
 		currentPos.setX(x);
 		currentPos.setY(y);
 	}

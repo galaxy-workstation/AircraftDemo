@@ -25,6 +25,7 @@ public abstract class ModelObject extends BaseObject {
 	public void parseModelFile(String resource) {
 		String fileName = ModelObject.class.getClassLoader()
 				.getResource(resource).toString();
+		fileName = "O:/hippo/AircraftDemo/src/main/resources/" + resource;
 		File file = new File(fileName);
 		if (!file.exists()) {
 			// TODO need to record log

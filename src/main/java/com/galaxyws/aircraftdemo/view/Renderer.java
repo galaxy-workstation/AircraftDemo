@@ -13,6 +13,7 @@ import javax.media.opengl.fixedfunc.GLLightingFunc;
 import javax.media.opengl.glu.GLU;
 
 import com.galaxyws.aircraftdemo.model.Model;
+import com.galaxyws.aircraftdemo.model.Point;
 
 public class Renderer {
 
@@ -25,13 +26,13 @@ public class Renderer {
 		gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
-	public void renderModel(GLAutoDrawable drawable, Model model) {
+	public void renderModel(GLAutoDrawable drawable, Model model, Point pos, float scale) {
 		GL2 gl = drawable.getGL().getGL2();
-		gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		
 		gl.glLoadIdentity();
 
-		gl.glTranslatef(aspect / 2, 0.5f, 0.0f);
-		gl.glScalef(0.2f, 0.2f, 0.2f);
+		gl.glTranslatef(aspect * pos.getX(), pos.getY(), 0.0f);
+		gl.glScalef(scale, scale, 1.0f);
         
 		Builder.buildModel(drawable, model);
 		model.getTexture().enable(gl);
