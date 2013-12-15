@@ -41,7 +41,7 @@ public class Bullet extends ActorObject {
 				.getDirection()));
 		float ySpeed = (float) (this.getType().getMoveSpeed() * Math.sin(this
 				.getDirection()));
-		long timeChunk = System.currentTimeMillis() - this.getCreateTime();
+		float timeChunk = (System.currentTimeMillis() - this.getCreateTime()) / 1000.0f;
 
 		float x = currentPos.getX() + xSpeed * timeChunk;
 		float y = currentPos.getY() + ySpeed * timeChunk;

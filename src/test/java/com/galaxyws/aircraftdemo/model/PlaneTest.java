@@ -10,9 +10,10 @@ public class PlaneTest {
 	@Test
 	public void testPlaneFire() throws InterruptedException{
 		Plane plane = JetType.getInstance().producePlane();
+		List<Bullet> bulletList = plane.fire();
 		while(true){
-			List<Bullet> bullet = plane.fire();
-			System.out.println(Arrays.toString(bullet.toArray()));
+			bulletList.get(0).moveTo(null);
+			System.out.println(Arrays.toString(bulletList.toArray()));
 			Thread.sleep(1000L);
 		}
 	}
