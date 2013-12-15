@@ -36,6 +36,7 @@ import java.util.List;
 
 import com.galaxyws.aircraftdemo.util.Vector2f;
 import com.galaxyws.aircraftdemo.util.Vector3f;
+import com.galaxyws.aircraftdemo.view.VBO;
 import com.jogamp.opengl.util.texture.Texture;
 
 

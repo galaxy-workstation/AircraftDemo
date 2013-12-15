@@ -15,7 +15,6 @@ import javax.media.opengl.GLAutoDrawable;
 
 import com.galaxyws.aircraftdemo.model.Model;
 import com.galaxyws.aircraftdemo.model.Model.Face;
-import com.galaxyws.aircraftdemo.model.VBO;
 import com.galaxyws.aircraftdemo.util.Vector2f;
 import com.galaxyws.aircraftdemo.util.Vector3f;
 import com.jogamp.common.nio.Buffers;
