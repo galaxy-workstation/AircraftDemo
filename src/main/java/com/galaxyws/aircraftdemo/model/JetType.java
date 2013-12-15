@@ -14,6 +14,7 @@ public class JetType extends PlaneType {
 				.asList(new BulletType[] { StraightLineBulletType.getInstance() }));
 		this.setHeight(Constant.JET_PLANE_MODE_HEIGHT);
 		this.setWidth(Constant.JET_PLANE_MODE_WIDTH);
+		this.setFireInterval(Constant.JET_PLANE_FIRE_INTERVAL);
 	}
 
 	public static PlaneType getInstance() {

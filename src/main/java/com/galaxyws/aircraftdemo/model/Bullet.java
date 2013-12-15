@@ -5,18 +5,9 @@ public class Bullet extends ActorObject {
 	private static final long serialVersionUID = -1071085780826554312L;
 
 	private float direction;
-	private BulletType type;
 
 	Bullet(BulletType type) {
 		this.setType(type);
-	}
-
-	public BulletType getType() {
-		return type;
-	}
-
-	private void setType(BulletType type) {
-		this.type = type;
 	}
 
 	public float getDirection() {
@@ -30,8 +21,7 @@ public class Bullet extends ActorObject {
 	@Override
 	public String toString() {
 		return "Bullet [direction=" + direction + "&position="
-				+ this.getPosition() + "]" + super.toString() + "["
-				+ type.toString() + "]";
+				+ this.getPosition() + "]" + super.toString();
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package com.galaxyws.aircraftdemo.model;
 
+import com.galaxyws.aircraftdemo.util.Constant;
 
 public abstract class ActorObject extends BaseObject {
 
@@ -8,6 +9,7 @@ public abstract class ActorObject extends BaseObject {
 	private float life;
 	private long createTime;
 	private Point position;
+	private ModelObject type;
 
 	public ActorObject() {
 		this.setCreateTime(System.currentTimeMillis());
@@ -36,7 +38,21 @@ public abstract class ActorObject extends BaseObject {
 	public void setLife(float life) {
 		this.life = life;
 	}
-	
+
+	public ModelObject getType() {
+		return type;
+	}
+
+	public void setType(ModelObject type) {
+		this.type = type;
+	}
+
+	public boolean isOutOfStage() {
+		return this.position.getX() >= Constant.MAX_RELATIVE_AXIS
+				|| this.getPosition().getX() <= 0
+				|| this.getPosition().getY() >= Constant.MAX_RELATIVE_AXIS
+				|| this.getPosition().getY() <= 0;
+	}
+
 	public abstract void moveTo(Point pos);
-	
 }

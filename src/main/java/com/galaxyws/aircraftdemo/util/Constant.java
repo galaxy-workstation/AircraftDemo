@@ -31,5 +31,6 @@ public final class Constant {
 	public static final float JET_PLANE_MODE_HEIGHT = 0.1f;
 	public static final float JET_PLANE_MODE_WIDTH = JET_PLANE_MODE_HEIGHT
 			* RADIO;
+	public static final int JET_PLANE_FIRE_INTERVAL = 1000;
 
 }
