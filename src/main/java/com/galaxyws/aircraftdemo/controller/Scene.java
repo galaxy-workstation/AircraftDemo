@@ -23,7 +23,7 @@ public class Scene {
 
 	public Scene() {
 		renderer = new Renderer();
-		background = new Background();
+//		background = new Background();
 		actorList = new ArrayList<ActorObject>();
 		Plane plane = JetType.getInstance().producePlane();
 		actorList.add(plane);

@@ -1,5 +1,6 @@
 package com.galaxyws.aircraftdemo.model;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.List;
 
@@ -20,7 +21,9 @@ public class PlaneTest {
 	
 	@Test
 	public void testFile(){
-		System.out.println(this.getClass().getClassLoader().getResource("com/galaxyws/aircraftdemo/star.obj"));
+		System.out.println(this.getClass().getClassLoader().getResource("com/galaxyws/aircraftdemo/star.obj").getPath());
+		File file = new File(this.getClass().getClassLoader().getResource("com/galaxyws/aircraftdemo/star.obj").getPath());
+		System.out.println(file.exists());
 	}
 	
 }
