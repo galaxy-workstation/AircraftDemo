@@ -3,14 +3,14 @@ package com.galaxyws.aircraftdemo.model;
 import java.io.Serializable;
 import java.util.UUID;
 
-public abstract class BaseObject implements Serializable {
+public abstract class Base implements Serializable {
 
 	private static final long serialVersionUID = -6014724008537678534L;
 	
 	private String id;
 
 
-	public BaseObject() {
+	public Base() {
 		super();
 		this.setId(UUID.randomUUID().toString());
 	}
@@ -45,7 +45,7 @@ public abstract class BaseObject implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BaseObject other = (BaseObject) obj;
+		Base other = (Base) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;

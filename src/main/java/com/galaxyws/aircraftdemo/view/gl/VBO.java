@@ -1,4 +1,4 @@
-package com.galaxyws.aircraftdemo.view;
+package com.galaxyws.aircraftdemo.view.gl;
 
 import static javax.media.opengl.GL.GL_ARRAY_BUFFER;
 import static javax.media.opengl.GL.GL_ELEMENT_ARRAY_BUFFER;

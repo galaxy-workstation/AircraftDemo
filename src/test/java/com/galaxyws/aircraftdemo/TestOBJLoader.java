@@ -3,8 +3,8 @@ package com.galaxyws.aircraftdemo;
 import java.io.File;
 import java.io.IOException;
 
-import com.galaxyws.aircraftdemo.model.Model;
 import com.galaxyws.aircraftdemo.util.OBJLoader;
+import com.galaxyws.aircraftdemo.view.gl.GlModel;
 
 public class TestOBJLoader {
 
@@ -14,7 +14,7 @@ public class TestOBJLoader {
 		File f = new File("O:/hippo/AircraftDemo/bin/com/galaxyws/aircraftdemo/star.obj");
 		System.out.println(f.getPath());
 		if (f.exists()){			
-			Model m = OBJLoader.loadTexturedModel(f);
+			GlModel m = OBJLoader.loadTexturedModel(f);
 		}
 	}
 

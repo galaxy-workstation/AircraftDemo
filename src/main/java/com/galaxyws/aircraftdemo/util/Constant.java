@@ -5,7 +5,7 @@ public final class Constant {
 	public static final String TITLE = "JOGL 2.0 Setup (GLCanvas)"; // window's title
 	public static final int CANVAS_WIDTH = 480; // width of the drawable
 	public static final int CANVAS_HEIGHT = 800; // height of the drawable
-	public static final int FPS = 120; // animator's target frames per second
+	public static final int FPS = 25; // animator's target frames per second
 	public static final float RADIO = CANVAS_WIDTH / (float) CANVAS_HEIGHT;
 
 	/*
@@ -13,6 +13,7 @@ public final class Constant {
 	 */
 	public static final float DEFAULT_LIFE = 100.0f;
 	public static final float MAX_RELATIVE_AXIS = 1.0f;
+	public static final int THREAD_POOL_SIZE = 2;
 
 	/**
 	 * Straight line bullet configuration

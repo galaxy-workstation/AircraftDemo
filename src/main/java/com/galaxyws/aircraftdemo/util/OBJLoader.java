@@ -35,7 +35,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import com.galaxyws.aircraftdemo.model.Model;
+import com.galaxyws.aircraftdemo.view.gl.GlModel;
 
 
 /**
@@ -43,10 +43,10 @@ import com.galaxyws.aircraftdemo.model.Model;
  */
 public class OBJLoader {
 	
-    public static Model loadTexturedModel(File f) throws IOException {
+    public static GlModel loadTexturedModel(File f) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader(f));
-        Model m = new Model();
-        Model.Material currentMaterial = new Model.Material();
+        GlModel m = new GlModel();
+        GlModel.Material currentMaterial = new GlModel.Material();
         String line;
         while ((line = reader.readLine()) != null) {
             if (line.startsWith("#")) {
@@ -57,7 +57,7 @@ public class OBJLoader {
                 File materialFile = new File(f.getParentFile().getAbsolutePath() + "/" + materialFileName);
                 BufferedReader materialFileReader = new BufferedReader(new FileReader(materialFile));
                 String materialLine;
-                Model.Material parseMaterial = new Model.Material();
+                GlModel.Material parseMaterial = new GlModel.Material();
                 String parseMaterialName = "";
                 while ((materialLine = materialFileReader.readLine()) != null) {
                     if (materialLine.startsWith("#")) {
@@ -68,7 +68,7 @@ public class OBJLoader {
                             m.getMaterials().put(parseMaterialName, parseMaterial);
                         }
                         parseMaterialName = materialLine.split(" ")[1];
-                        parseMaterial = new Model.Material();
+                        parseMaterial = new GlModel.Material();
                     } else if (materialLine.startsWith("Ns ")) {
                         parseMaterial.specularCoefficient = Float.valueOf(materialLine.split(" ")[1]);
                     } else if (materialLine.startsWith("Ka ")) {
@@ -130,7 +130,7 @@ public class OBJLoader {
                     normalIndicesArray[1] = Integer.parseInt(faceIndices[2].split("/")[2]);
                     normalIndicesArray[2] = Integer.parseInt(faceIndices[3].split("/")[2]);
                 }
-                m.getFaces().add(new Model.Face(vertexIndicesArray, normalIndicesArray,
+                m.getFaces().add(new GlModel.Face(vertexIndicesArray, normalIndicesArray,
                         textureCoordinateIndicesArray, currentMaterial));
             } else if (line.startsWith("s ")) {
                 boolean enableSmoothShading = !line.contains("off");

@@ -2,7 +2,7 @@ package com.galaxyws.aircraftdemo.model;
 
 import java.util.List;
 
-public abstract class PlaneType extends ModelObject {
+public abstract class PlaneType extends Model {
 
 	private static final long serialVersionUID = -1773016154769088348L;
 

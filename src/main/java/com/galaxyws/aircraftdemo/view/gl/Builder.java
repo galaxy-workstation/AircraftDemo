@@ -1,4 +1,4 @@
-package com.galaxyws.aircraftdemo.view;
+package com.galaxyws.aircraftdemo.view.gl;
 
 import static javax.media.opengl.GL.GL_ARRAY_BUFFER;
 import static javax.media.opengl.GL.GL_STATIC_DRAW;
@@ -13,10 +13,9 @@ import java.util.List;
 import javax.media.opengl.GL2;
 import javax.media.opengl.GLAutoDrawable;
 
-import com.galaxyws.aircraftdemo.model.Model;
-import com.galaxyws.aircraftdemo.model.Model.Face;
 import com.galaxyws.aircraftdemo.util.Vector2f;
 import com.galaxyws.aircraftdemo.util.Vector3f;
+import com.galaxyws.aircraftdemo.view.gl.GlModel.Face;
 import com.jogamp.common.nio.Buffers;
 import com.jogamp.opengl.util.texture.Texture;
 import com.jogamp.opengl.util.texture.TextureData;
@@ -24,7 +23,7 @@ import com.jogamp.opengl.util.texture.TextureIO;
 
 public class Builder {
 
-	private static void buildVBO(GLAutoDrawable drawable, Model model) {
+	private static void buildVBO(GLAutoDrawable drawable, GlModel model) {
 		GL2 gl = drawable.getGL().getGL2();
 
 		List<Vector3f> vertices = model.getVertices();
@@ -75,7 +74,7 @@ public class Builder {
 				faces.size() * 3));
 	}
 
-	private static void buildTexture(GLAutoDrawable drawable, Model model) {
+	private static void buildTexture(GLAutoDrawable drawable, GlModel model) {
 		GL2 gl = drawable.getGL().getGL2();
 		Texture texture = null;
         try {
@@ -90,7 +89,7 @@ public class Builder {
 		model.setTexture(texture);
 	}
 
-	public static void buildModel(GLAutoDrawable drawable, Model model) {
+	public static void buildModel(GLAutoDrawable drawable, GlModel model) {
 		if (model.getVbo() == null) {
 			buildVBO(drawable, model);
 		}

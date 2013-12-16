@@ -1,6 +1,6 @@
 package com.galaxyws.aircraftdemo.model;
 
-public class Bullet extends ActorObject {
+public class Bullet extends Actor {
 
 	private static final long serialVersionUID = -1071085780826554312L;
 
@@ -27,7 +27,7 @@ public class Bullet extends ActorObject {
 	}
 
 	@Override
-	public void moveTo(Point pos) {
+	public void moveTo(Point pos, long currentTime) {
 		if (originalPos == null) {
 			originalPos = new Point(getPosition());
 		}
@@ -37,7 +37,7 @@ public class Bullet extends ActorObject {
 				.getDirection()));
 		float ySpeed = (float) (this.getType().getMoveSpeed() * Math.sin(this
 				.getDirection()));
-		float timeChunk = (System.currentTimeMillis() - this.getCreateTime()) / 1000.0f;
+		float timeChunk = (currentTime - this.getCreateTime()) / 1000.0f;
 
 		float x = originalPos.getX() + xSpeed * timeChunk;
 		float y = originalPos.getY() + ySpeed * timeChunk;

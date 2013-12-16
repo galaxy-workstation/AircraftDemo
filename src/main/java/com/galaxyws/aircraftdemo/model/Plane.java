@@ -6,7 +6,7 @@ import java.util.Map;
 
 import com.galaxyws.aircraftdemo.util.CollectionUtil;
 
-public class Plane extends ActorObject {
+public class Plane extends Actor {
 
 	private static final long serialVersionUID = 5176602335439345887L;
 
@@ -43,11 +43,10 @@ public class Plane extends ActorObject {
 		return firedBulletList;
 	}
 
-	public List<Bullet> fire() {
-		long now = System.currentTimeMillis();
-		int fireChuck = (int) (now - this.getLastFireTime());
+	public List<Bullet> fire(long currentTime) {
+		int fireChuck = (int) (currentTime - this.getLastFireTime());
 		if (fireChuck > ((PlaneType)this.getType()).getFireInterval()) {
-			this.setLastFireTime(now);
+			this.setLastFireTime(currentTime);
 			return this.fixFiredBulletPosition(currentBulletType
 					.produceBullet());
 		}
@@ -79,7 +78,7 @@ public class Plane extends ActorObject {
 	}
 
 	@Override
-	public void moveTo(Point pos) {
+	public void moveTo(Point pos, long currentTime) {
 
 	}
 

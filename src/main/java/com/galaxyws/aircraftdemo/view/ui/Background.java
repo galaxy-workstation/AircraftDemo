@@ -1,14 +1,13 @@
-package com.galaxyws.aircraftdemo.controller;
+package com.galaxyws.aircraftdemo.view.ui;
 
 import java.io.File;
 import java.io.IOException;
 
-import com.galaxyws.aircraftdemo.model.Model;
-import com.galaxyws.aircraftdemo.util.Constant;
 import com.galaxyws.aircraftdemo.util.OBJLoader;
+import com.galaxyws.aircraftdemo.view.gl.GlModel;
 
 public class Background {
-	public Model model;
+	public GlModel model;
 	public Background() {
 
 		File f = new File("O:\\hippo\\AircraftDemo\\build\\com\\galaxyws\\aircraftdemo\\dan.obj");

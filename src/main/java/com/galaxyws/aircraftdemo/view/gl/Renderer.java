@@ -1,4 +1,4 @@
-package com.galaxyws.aircraftdemo.view;
+package com.galaxyws.aircraftdemo.view.gl;
 
 import static javax.media.opengl.GL.GL_COLOR_BUFFER_BIT;
 import static javax.media.opengl.GL.GL_DEPTH_BUFFER_BIT;
@@ -12,7 +12,6 @@ import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.fixedfunc.GLLightingFunc;
 import javax.media.opengl.glu.GLU;
 
-import com.galaxyws.aircraftdemo.model.Model;
 import com.galaxyws.aircraftdemo.model.Point;
 
 public class Renderer {
@@ -21,12 +20,12 @@ public class Renderer {
 
 	private float aspect;
 
-	public void render(GLAutoDrawable drawable) {
+	public void clear(GLAutoDrawable drawable) {
 		GL2 gl = drawable.getGL().getGL2();
 		gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
-	public void renderModel(GLAutoDrawable drawable, Model model, Point pos, float scale) {
+	public void renderModel(GLAutoDrawable drawable, GlModel model, Point pos, float scale) {
 		GL2 gl = drawable.getGL().getGL2();
 		
 		gl.glLoadIdentity();
