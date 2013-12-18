@@ -4,9 +4,9 @@ import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;
 import javax.media.opengl.awt.GLCanvas;
 
-import com.galaxyws.aircraftdemo.model.Actor;
-import com.galaxyws.aircraftdemo.model.ActorsQueue;
-import com.galaxyws.aircraftdemo.model.NullActor;
+import com.galaxyws.aircraftdemo.model.actor.Actor;
+import com.galaxyws.aircraftdemo.model.actor.ActorsQueue;
+import com.galaxyws.aircraftdemo.model.actor.NullActor;
 
 public class Scene extends GLCanvas implements GLEventListener {
 
@@ -29,7 +29,7 @@ public class Scene extends GLCanvas implements GLEventListener {
 				break;
 			}
 			renderer.renderModel(drawable, actor.getType().getModel(),
-					actor.getPosition(), 0.02f);
+					actor.getShape().getPosition(), 0.02f);
 		}
 	}
 

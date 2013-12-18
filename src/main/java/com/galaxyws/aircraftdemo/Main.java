@@ -3,7 +3,7 @@ package com.galaxyws.aircraftdemo;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import com.galaxyws.aircraftdemo.controller.SceneTask;
+import com.galaxyws.aircraftdemo.controller.RenderTask;
 import com.galaxyws.aircraftdemo.controller.UpdateTask;
 import com.galaxyws.aircraftdemo.util.Constant;
 
@@ -32,7 +32,7 @@ public class Main implements Runnable {
 
 	@Override
 	public void run() {
-		this.service.submit(new SceneTask(this));
+		this.service.submit(new RenderTask(this));
 		this.service.submit(new UpdateTask());
 	}
 

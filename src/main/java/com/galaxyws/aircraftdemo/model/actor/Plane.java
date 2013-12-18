@@ -1,21 +1,30 @@
-package com.galaxyws.aircraftdemo.model;
+package com.galaxyws.aircraftdemo.model.actor;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.galaxyws.aircraftdemo.model.BulletType;
+import com.galaxyws.aircraftdemo.model.JetType;
+import com.galaxyws.aircraftdemo.model.PlaneType;
+import com.galaxyws.aircraftdemo.model.Point;
+import com.galaxyws.aircraftdemo.model.instruction.ActivateDragInstruction;
+import com.galaxyws.aircraftdemo.model.instruction.DeactivateDragInstruction;
+import com.galaxyws.aircraftdemo.model.instruction.Instruction;
+import com.galaxyws.aircraftdemo.model.instruction.MoveInstruction;
 import com.galaxyws.aircraftdemo.util.CollectionUtil;
 
-public class Plane extends Actor {
+public class Plane extends Actor implements Controllable {
 
 	private static final long serialVersionUID = 5176602335439345887L;
 
-//	private PlaneType planeType;
 	private BulletType currentBulletType;
 	private long lastFireTime;
 	private Map<BulletType, Integer> specialBulletType = new HashMap<BulletType, Integer>();
 
-	Plane() {
+	private boolean underDrag = false;
+
+	public Plane() {
 		this(JetType.getInstance());
 	}
 
@@ -38,14 +47,18 @@ public class Plane extends Actor {
 			return null;
 		}
 		for (Bullet bullet : firedBulletList) {
-			bullet.setPosition(new Point(this.getPosition()));
+			bullet.getShape().getPosition()
+					.setX(this.getShape().getPosition().getX());
+			bullet.getShape().getPosition()
+					.setY(this.getShape().getPosition().getY());
+			bullet.setOriginalPos(new Point(this.getShape().getPosition()));
 		}
 		return firedBulletList;
 	}
 
 	public List<Bullet> fire(long currentTime) {
 		int fireChuck = (int) (currentTime - this.getLastFireTime());
-		if (fireChuck > ((PlaneType)this.getType()).getFireInterval()) {
+		if (fireChuck > ((PlaneType) this.getType()).getFireInterval()) {
 			this.setLastFireTime(currentTime);
 			return this.fixFiredBulletPosition(currentBulletType
 					.produceBullet());
@@ -67,10 +80,12 @@ public class Plane extends Actor {
 	}
 
 	public boolean changeBulletType(BulletType bulletType) {
-		if (CollectionUtil.isEmpty(((PlaneType)this.getType()).getPreLoadBulletType())) {
+		if (CollectionUtil.isEmpty(((PlaneType) this.getType())
+				.getPreLoadBulletType())) {
 			return false;
 		}
-		if (((PlaneType)this.getType()).getPreLoadBulletType().contains(bulletType)) {
+		if (((PlaneType) this.getType()).getPreLoadBulletType().contains(
+				bulletType)) {
 			this.currentBulletType = bulletType;
 			return true;
 		}
@@ -88,6 +103,27 @@ public class Plane extends Actor {
 
 	private void setLastFireTime(long lastFireTime) {
 		this.lastFireTime = lastFireTime;
+	}
+
+	@Override
+	public void consume(Instruction instruction) {
+		if (instruction instanceof ActivateDragInstruction) {
+			ActivateDragInstruction dragInstruction = (ActivateDragInstruction) instruction;
+			Point point = dragInstruction.getTarget();
+
+			if (this.getShape().containPoint(point)) {
+				this.underDrag = true;
+			}
+		}
+		else if (instruction instanceof DeactivateDragInstruction) {
+			this.underDrag = false;
+		}
+		else if (instruction instanceof MoveInstruction) {
+			if (this.underDrag) {
+				MoveInstruction moveInstruction = (MoveInstruction) instruction;
+				this.getShape().setPosition(moveInstruction.getTo());
+			}
+		}
 	}
 
 }

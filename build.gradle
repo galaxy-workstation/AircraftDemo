@@ -17,6 +17,7 @@ repositories { mavenCentral() }
 
 dependencies {
 	compile fileTree(dir: 'lib')
+	compile 'com.google.protobuf:protobuf-java:2.5.0'
 //	compile 'org.jogamp.jogl:jogl-all:2.1.2'
 //	compile 'org.jogamp.jogl:jogl-all:2.1.2:natives-linux-amd64'
 //	compile 'org.jogamp.jogl:jogl-all:2.1.2:natives-windows-amd64'

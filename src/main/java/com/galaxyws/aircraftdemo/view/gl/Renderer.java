@@ -17,22 +17,21 @@ import com.galaxyws.aircraftdemo.model.Point;
 public class Renderer {
 
 	private GLU glu; // for the GL Utility
-
-	private float aspect;
-
+	
 	public void clear(GLAutoDrawable drawable) {
 		GL2 gl = drawable.getGL().getGL2();
 		gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 
-	public void renderModel(GLAutoDrawable drawable, GlModel model, Point pos, float scale) {
+	public void renderModel(GLAutoDrawable drawable, GlModel model, Point pos,
+			float scale) {
 		GL2 gl = drawable.getGL().getGL2();
-		
+
 		gl.glLoadIdentity();
 
-		gl.glTranslatef(aspect * pos.getX(), pos.getY(), 0.0f);
+		gl.glTranslatef(pos.getX(), pos.getY(), 0.0f);
 		gl.glScalef(scale, scale, 1.0f);
-        
+
 		Builder.buildModel(drawable, model);
 		model.getTexture().enable(gl);
 		model.getTexture().bind(gl);
@@ -43,7 +42,7 @@ public class Renderer {
 			int height) {
 		if (height == 0)
 			height = 1;
-		aspect = (float) width / height;
+		float aspect = (float) width / height;
 		GL2 gl = drawable.getGL().getGL2();
 
 		gl.glViewport(0, 0, width, height);

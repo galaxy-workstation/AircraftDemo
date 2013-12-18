@@ -1,4 +1,7 @@
-package com.galaxyws.aircraftdemo.model;
+package com.galaxyws.aircraftdemo.model.actor;
+
+import com.galaxyws.aircraftdemo.model.BulletType;
+import com.galaxyws.aircraftdemo.model.Point;
 
 public class Bullet extends Actor {
 
@@ -8,8 +11,16 @@ public class Bullet extends Actor {
 
 	private Point originalPos;
 
-	Bullet(BulletType type) {
+	public Bullet(BulletType type) {
 		this.setType(type);
+	}
+
+	public Point getOriginalPos() {
+		return originalPos;
+	}
+
+	public void setOriginalPos(Point originalPos) {
+		this.originalPos = originalPos;
 	}
 
 	public float getDirection() {
@@ -21,18 +32,9 @@ public class Bullet extends Actor {
 	}
 
 	@Override
-	public String toString() {
-		return "Bullet [direction=" + direction + "&position="
-				+ this.getPosition() + "]" + super.toString();
-	}
-
-	@Override
 	public void moveTo(Point pos, long currentTime) {
-		if (originalPos == null) {
-			originalPos = new Point(getPosition());
-		}
 
-		Point currentPos = this.getPosition();
+		Point currentPos = this.getShape().getPosition();
 		float xSpeed = (float) (this.getType().getMoveSpeed() * Math.cos(this
 				.getDirection()));
 		float ySpeed = (float) (this.getType().getMoveSpeed() * Math.sin(this

@@ -1,4 +1,6 @@
-package com.galaxyws.aircraftdemo.model;
+package com.galaxyws.aircraftdemo.model.actor;
+
+import com.galaxyws.aircraftdemo.model.Point;
 
 public class NullActor extends Actor {
 

@@ -3,6 +3,8 @@ package com.galaxyws.aircraftdemo.model;
 import java.util.Arrays;
 import java.util.List;
 
+import com.galaxyws.aircraftdemo.model.actor.Bullet;
+import com.galaxyws.aircraftdemo.model.actor.Circle;
 import com.galaxyws.aircraftdemo.util.Constant;
 
 public class StraightLineBulletType extends BulletType {
@@ -21,6 +23,7 @@ public class StraightLineBulletType extends BulletType {
 	public List<Bullet> produceBullet() {
 		Bullet bullet = new Bullet(this);
 		bullet.setDirection((float) (Math.PI / 2));
+		bullet.setShape(new Circle(Constant.STRAIGHT_LINE_BULLET_SIZE, new Point()));
 		return Arrays.asList(new Bullet[] { bullet });
 	}
 

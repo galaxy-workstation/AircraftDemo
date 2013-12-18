@@ -2,6 +2,8 @@ package com.galaxyws.aircraftdemo.model;
 
 import java.util.Arrays;
 
+import com.galaxyws.aircraftdemo.model.actor.Circle;
+import com.galaxyws.aircraftdemo.model.actor.Plane;
 import com.galaxyws.aircraftdemo.util.Constant;
 
 public class JetType extends PlaneType {
@@ -28,7 +30,7 @@ public class JetType extends PlaneType {
 
 	@Override
 	public Plane producePlane() {
-		float x = Constant.MAX_RELATIVE_AXIS / 2;
+		float x = Constant.WIDTH_RELATIVE_AXIS / 2;
 		float y = this.getHeight() / 2;
 		return producePlane(new Point(x, y));
 	}
@@ -37,7 +39,7 @@ public class JetType extends PlaneType {
 	public Plane producePlane(Point pos) {
 		Plane plane = new Plane(this);
 		plane.setLife(Constant.DEFAULT_LIFE);
-		plane.setPosition(pos);
+		plane.setShape(new Circle(Constant.JET_SHAPE_SIZE, new Point(pos)));
 		return plane;
 	}
 

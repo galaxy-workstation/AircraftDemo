@@ -2,6 +2,8 @@ package com.galaxyws.aircraftdemo.model;
 
 import java.util.List;
 
+import com.galaxyws.aircraftdemo.model.actor.Bullet;
+
 public abstract class BulletType extends Model {
 
 	private static final long serialVersionUID = -6729217996510720331L;

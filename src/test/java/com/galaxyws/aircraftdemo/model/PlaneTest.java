@@ -6,6 +6,9 @@ import java.util.List;
 
 import org.junit.Test;
 
+import com.galaxyws.aircraftdemo.model.actor.Bullet;
+import com.galaxyws.aircraftdemo.model.actor.Plane;
+
 public class PlaneTest {
 
 	@Test

@@ -1,5 +1,8 @@
-package com.galaxyws.aircraftdemo.model;
+package com.galaxyws.aircraftdemo.model.actor;
 
+import com.galaxyws.aircraftdemo.model.Base;
+import com.galaxyws.aircraftdemo.model.Model;
+import com.galaxyws.aircraftdemo.model.Point;
 import com.galaxyws.aircraftdemo.util.Constant;
 
 public abstract class Actor extends Base {
@@ -8,19 +11,11 @@ public abstract class Actor extends Base {
 
 	private float life;
 	private long createTime;
-	private Point position;
 	private Model type;
+	private Shape shape;
 
 	public Actor() {
 		this.setCreateTime(System.currentTimeMillis());
-	}
-
-	public Point getPosition() {
-		return position;
-	}
-
-	public void setPosition(Point position) {
-		this.position = position;
 	}
 
 	public long getCreateTime() {
@@ -48,11 +43,20 @@ public abstract class Actor extends Base {
 	}
 
 	public boolean isOutOfStage() {
-		return this.position.getX() >= Constant.MAX_RELATIVE_AXIS
-				|| this.getPosition().getX() <= 0
-				|| this.getPosition().getY() >= Constant.MAX_RELATIVE_AXIS
-				|| this.getPosition().getY() <= 0;
+		return this.shape.isOutOfStage();
 	}
 
 	public abstract void moveTo(Point pos, long currentTime);
+
+
+
+	public Shape getShape() {
+		return shape;
+	}
+
+
+
+	public void setShape(Shape shape) {
+		this.shape = shape;
+	}
 }

@@ -1,4 +1,4 @@
-package com.galaxyws.aircraftdemo.model;
+package com.galaxyws.aircraftdemo.model.actor;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
