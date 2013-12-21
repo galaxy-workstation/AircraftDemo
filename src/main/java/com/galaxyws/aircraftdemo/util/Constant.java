@@ -31,11 +31,11 @@ public final class Constant {
 	 * Jet Plane configuration
 	 */
 	public static final String JET_PLANE_MODEL = "com/galaxyws/aircraftdemo/ji.obj";
-	public static final float JET_PLANE_MOVE_SPEED = 0.2f;
+	public static final float JET_PLANE_MOVE_SPEED = 0.8f;
 	public static final float JET_PLANE_MODE_HEIGHT = 0.1f;
 	public static final float JET_PLANE_MODE_WIDTH = JET_PLANE_MODE_HEIGHT
 			* RADIO;
-	public static final int JET_PLANE_FIRE_INTERVAL = 200;
+	public static final int JET_PLANE_FIRE_INTERVAL = 20;
 	public static final float JET_SHAPE_SIZE = 0.2f;
 
 }

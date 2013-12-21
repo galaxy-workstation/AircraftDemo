@@ -60,9 +60,7 @@ public class UpdateTask implements Runnable {
 
 			for (Plane plane : planeList) {
 				firedBulletList = plane.fire(start);
-				queue.push(plane);
 			}
-			long middle = System.currentTimeMillis();
 
 			while (!ActorsQueue.getInstance().isEmpty()) {
 				LockSupport.parkNanos(1000);
@@ -70,7 +68,7 @@ public class UpdateTask implements Runnable {
 
 			Iterator<Bullet> iterator = bulletList.iterator();
 			while (iterator.hasNext()) {
-				Bullet bullet = iterator.next(); 	
+				Bullet bullet = iterator.next();
 				bullet.moveTo(null, start);
 				if (bullet.isOutOfStage()) {
 					iterator.remove();
@@ -78,15 +76,18 @@ public class UpdateTask implements Runnable {
 					queue.push(bullet);
 				}
 			}
+			for (Plane plane : planeList) {
+				queue.push(plane);
+			}
 			ActorsQueue.getInstance().pushEnd();
 			if (!CollectionUtil.isEmpty(firedBulletList)) {
 				bulletList.addAll(firedBulletList);
 			}
-//			System.out.print("plane cost: " + (middle - start));
-//
-//			long period = System.currentTimeMillis() - start;
-//			System.out.print("&totol:" + period + "\n");
-//			System.out.flush();
+			// System.out.print("plane cost: " + (middle - start));
+			//
+			// long period = System.currentTimeMillis() - start;
+			// System.out.print("&totol:" + period + "\n");
+			// System.out.flush();
 
 		}
 

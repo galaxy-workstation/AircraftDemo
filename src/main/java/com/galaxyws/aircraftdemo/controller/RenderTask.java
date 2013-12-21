@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import com.galaxyws.aircraftdemo.Main;
 import com.galaxyws.aircraftdemo.controller.listener.MouseListenerImpl;
 import com.galaxyws.aircraftdemo.util.Constant;
-import com.galaxyws.aircraftdemo.view.gl.Scene;
+import com.galaxyws.aircraftdemo.view.Scene;
 
 public class RenderTask implements Runnable {
 

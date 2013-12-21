@@ -4,22 +4,22 @@ import java.io.File;
 import java.io.IOException;
 
 import com.galaxyws.aircraftdemo.util.OBJLoader;
-import com.galaxyws.aircraftdemo.view.gl.GlModel;
+import com.galaxyws.aircraftdemo.view.ActorModel;
 
 public abstract class Model extends Base {
 
 	private static final long serialVersionUID = -4919689732501903323L;
 
-	private GlModel model;
+	private ActorModel model;
 	private float width;
 	private float height;
 	private float moveSpeed;
 
-	public GlModel getModel() {
+	public ActorModel getModel() {
 		return model;
 	}
 
-	private void setModel(GlModel model) {
+	private void setModel(ActorModel model) {
 		this.model = model;
 	}
 
@@ -31,7 +31,7 @@ public abstract class Model extends Base {
 			// TODO need to record log
 			return;
 		}
-		GlModel model = null;
+		ActorModel model = null;
 		try {
 			model = OBJLoader.loadTexturedModel(file);
 		} catch (IOException e) {

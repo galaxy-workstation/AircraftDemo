@@ -10,8 +10,8 @@ import com.galaxyws.aircraftdemo.util.Constant;
 import com.galaxyws.aircraftdemo.util.OBJLoader;
 import com.galaxyws.aircraftdemo.util.Vector2f;
 import com.galaxyws.aircraftdemo.util.Vector3f;
-import com.galaxyws.aircraftdemo.view.gl.GlModel;
-import com.galaxyws.aircraftdemo.view.gl.GlModel.Face;
+import com.galaxyws.aircraftdemo.view.ActorModel;
+import com.galaxyws.aircraftdemo.view.ActorModel.Face;
 
 public class TestOBJLoader {
 
@@ -23,7 +23,7 @@ public class TestOBJLoader {
 		File f = new File(fileName);
 		System.out.println(f.getPath());
 		if (f.exists()) {
-			GlModel m = OBJLoader.loadTexturedModel(f);
+			ActorModel m = OBJLoader.loadTexturedModel(f);
 			BaseModel.Builder pbm = BaseModel.newBuilder();
 					
 			List<Vector3f> vertices = m.getVertices();
