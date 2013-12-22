@@ -16,13 +16,12 @@ public class TexturedRenderable implements Renderable {
 
 	private FloatBuffer positionData = null;
 	private FloatBuffer texCoordData = null;
-	private String textureResource = null;
 	private Texture texture = null;
 	private TexturedShader texturedShader = null;
 	private int vertexCount = 0;
 
-	public void setTexture(String textureResource) {
-		this.textureResource = textureResource;
+	public void setTexture(Texture texture) {
+		this.texture = texture;
 	}
 
 	public void setPositionData(FloatBuffer data) {
@@ -34,19 +33,11 @@ public class TexturedRenderable implements Renderable {
 	}
 
 	@Override
-	public void render(GLAutoDrawable drawable) {
-		if (null == texture) {
-			try {
-				InputStream stream = new FileInputStream(textureResource);
-				TextureData data = TextureIO.newTextureData(
-						drawable.getGLProfile(), stream, false, "png");
-				texture = TextureIO.newTexture(data);
-			} catch (IOException exc) {
-				exc.printStackTrace();
-			}
+	public void render() {
+		if (null != texture) {
+			texturedShader.useTexture(texture);
 		}
 
-		texturedShader.useTexture(texture);
 		texturedShader.render();
 	}
 
@@ -82,5 +73,10 @@ public class TexturedRenderable implements Renderable {
 	@Override
 	public void loadIdentity() {
 		texturedShader.loadIdentity();
+	}
+	
+	@Override
+	public void ortho2D(float left, float bottom, float right, float top) {
+		texturedShader.ortho2D(left, bottom, right, top);
 	}
 }

@@ -10,14 +10,15 @@ import java.nio.IntBuffer;
 import javax.media.opengl.GL2ES2;
 import javax.media.opengl.GLAutoDrawable;
 
-import com.galaxyws.aircraftdemo.view.gl2es2.shader.matrix.BaseMatrix;
-import com.galaxyws.aircraftdemo.view.gl2es2.shader.matrix.Rotate;
-import com.galaxyws.aircraftdemo.view.gl2es2.shader.matrix.Scale;
-import com.galaxyws.aircraftdemo.view.gl2es2.shader.matrix.Translate;
+import com.galaxyws.aircraftdemo.view.math.matrix.BaseMatrix;
+import com.galaxyws.aircraftdemo.view.math.matrix.Ortho;
+import com.galaxyws.aircraftdemo.view.math.matrix.Rotate;
+import com.galaxyws.aircraftdemo.view.math.matrix.Scale;
+import com.galaxyws.aircraftdemo.view.math.matrix.Translate;
 import com.jogamp.common.nio.Buffers;
 import com.jogamp.opengl.util.texture.Texture;
 
-public class TexturedShader implements Shader {
+public class TexturedShader {
 	private GL2ES2 gl2es2 = null;
 	private ShaderImpl shader = null;
 
@@ -32,6 +33,9 @@ public class TexturedShader implements Shader {
 	private BaseMatrix modelMat = new BaseMatrix();
 	private int modelMatrixLocation = 0;
 
+	private BaseMatrix projectMat;
+	private int projectMatrixLocation = 0;
+	
 	private int vertexCount = 0;
 
 	private String[] vShaderStr = {
@@ -41,9 +45,10 @@ public class TexturedShader implements Shader {
 					+ "varying vec2 v_texCoord;     \n"
 					+ "uniform mat4 m_model;    \n"
 					+ "uniform mat4 gl_ProjectionMatrix;    \n"
+					+ "uniform mat4 m_project;    \n"
 					+ "void main()                  \n"
 					+ "{                            \n"
-					+ "   vec4 p = (gl_ProjectionMatrix * m_model * a_position);       \n"
+					+ "   vec4 p = (m_project * m_model * a_position);       \n"
 					+ "   gl_Position = p; \n"
 					+ "   v_texCoord = a_texCoord;  \n"
 					+ "}                            \n",
@@ -61,6 +66,7 @@ public class TexturedShader implements Shader {
 	private static final String ATTR_TEXCOORD = "a_texCoord";
 	private static final String UNIF_TEXCOORD = "s_texture";
 	private static final String UNIF_MODEL = "m_model";
+	private static final String UNIF_PROJECT = "m_project";
 
 	public TexturedShader(GLAutoDrawable drawable) {
 		this.gl2es2 = drawable.getGL().getGL2ES2();
@@ -71,10 +77,10 @@ public class TexturedShader implements Shader {
 
 		this.samplerLocation = shader.getUniformLoc(UNIF_TEXCOORD);
 		this.modelMatrixLocation = shader.getUniformLoc(UNIF_MODEL);
+		this.projectMatrixLocation = shader.getUniformLoc(UNIF_PROJECT);
 		
 	}
 
-	@Override
 	public void render() {
 
 		gl2es2.glUseProgram(shader.getProgram());
@@ -91,8 +97,9 @@ public class TexturedShader implements Shader {
 		gl2es2.glEnableVertexAttribArray(this.texCoordLocation);
 
 		gl2es2.glUniform1i(this.samplerLocation, 0);
-		
+
 		gl2es2.glUniformMatrix4fv(this.modelMatrixLocation, 1, false, this.modelMat.getMatrix(), 0);
+		gl2es2.glUniformMatrix4fv(this.projectMatrixLocation, 1, false, this.projectMat.getMatrix(), 0);
 
 		gl2es2.glDrawArrays(GL_TRIANGLES, 0, this.vertexCount);
 
@@ -143,6 +150,10 @@ public class TexturedShader implements Shader {
 	}
 	public void translate(float x, float y, float z) {
 		this.modelMat.mul(new Translate(x, y, z));
+	}
+
+	public void ortho2D(float left, float bottom, float right, float top) {
+		this.projectMat = new Ortho(left, bottom, -1.0f, right, top, 1.0f);
 	}
 
 	public void loadIdentity() {

@@ -13,35 +13,32 @@ public class Scene extends GLCanvas implements GLEventListener {
 
 	private static final long serialVersionUID = -7985416299847073299L;
 
-	private Renderer renderer;
 
 	public Scene() {
-		renderer = new Renderer();
-
 		this.addGLEventListener(this);
 	}
 
 	public void display(GLAutoDrawable drawable) {
-		renderer.clear(drawable);
+		
+		Renderer.getInstance().clear(drawable);
 
 		while (true) {
 			Actor actor = ActorsQueue.getInstance().poll();
 			if (actor instanceof NullActor) {
 				break;
 			}
-			renderer.renderModel(drawable, actor.getType().getModel(),
+			Renderer.getInstance().renderModel(drawable, actor.getType().getPbModel(),
 					actor.getShape().getPosition(), 0.02f);
 		}
 	}
 
 	public void init(GLAutoDrawable drawable) {
-		renderer.init(drawable); // get the OpenGL graphics
-									// context);
+		Renderer.getInstance().init(drawable);
 	}
 
 	public void reshape(GLAutoDrawable drawable, int x, int y, int width,
 			int height) {
-		renderer.reshape(drawable, x, y, width, height);
+		Renderer.getInstance().reshape(drawable, x, y, width, height);
 	}
 
 	@Override

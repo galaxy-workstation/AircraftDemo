@@ -1,24 +1,19 @@
-package com.galaxyws.tools;
+package com.galaxyws.aircraftdemo.tools;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.util.List;
 
 import com.galaxyws.aircraftdemo.model.Model;
-import com.galaxyws.aircraftdemo.util.Constant;
-import com.galaxyws.aircraftdemo.util.OBJLoader;
-import com.galaxyws.aircraftdemo.util.Vector2f;
-import com.galaxyws.aircraftdemo.util.Vector3f;
+import com.galaxyws.aircraftdemo.tools.RenderableModel.Face;
 import com.galaxyws.aircraftdemo.util.pb.PBModel.BaseModel;
-import com.galaxyws.aircraftdemo.view.RenderableModel;
-import com.galaxyws.aircraftdemo.view.RenderableModel.Face;
 
 public class Obj2Protobuf {
 
 	public static void main(String[] args) throws Exception {
 
 		String fileName = Model.class.getClassLoader()
-				.getResource(Constant.STRAIGHT_LINE_BULLET_MODEL).getPath();
+				.getResource("com/galaxyws/aircraftdemo/ji.obj").getPath();
 		File f = new File(fileName);
 		System.out.println(f.getPath());
 		if (f.exists()) {

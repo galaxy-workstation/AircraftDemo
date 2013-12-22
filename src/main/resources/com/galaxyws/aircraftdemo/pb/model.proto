@@ -1,0 +1,38 @@
+package test;
+
+option java_package = "com.galaxyws.aircraftdemo";
+option java_outer_classname = "PBModel";
+message BaseModel {
+	required string name = 1;
+	required string texture = 2;
+	required int32 vertexNumber = 3;
+
+	message Vertex3f {
+		required float x = 1;
+		required float y = 2;
+		required float z = 3;
+	}
+
+	message Color4f {
+		required float r = 1;
+		required float g = 2;
+		required float b = 3;
+		required float a = 4;
+	}
+
+	message Normal3f {
+		required float x = 1;
+		required float y = 2;
+		required float z = 3;
+	}
+
+	message TexCoord2f {
+		required float s = 1;
+		required float t = 2;
+	}
+
+	repeated Vertex3f vertex = 4;
+	repeated Color4f color = 5;
+	repeated Normal3f normal = 6;
+	repeated TexCoord2f texCoord = 7;
+}

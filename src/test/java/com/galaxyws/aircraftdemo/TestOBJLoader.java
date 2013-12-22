@@ -4,14 +4,14 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.util.List;
 
-import com.galaxyws.aircraftdemo.PBModel.BaseModel;
 import com.galaxyws.aircraftdemo.model.Model;
+import com.galaxyws.aircraftdemo.tools.OBJLoader;
+import com.galaxyws.aircraftdemo.tools.RenderableModel;
+import com.galaxyws.aircraftdemo.tools.Vector2f;
+import com.galaxyws.aircraftdemo.tools.Vector3f;
+import com.galaxyws.aircraftdemo.tools.RenderableModel.Face;
 import com.galaxyws.aircraftdemo.util.Constant;
-import com.galaxyws.aircraftdemo.util.OBJLoader;
-import com.galaxyws.aircraftdemo.util.Vector2f;
-import com.galaxyws.aircraftdemo.util.Vector3f;
-import com.galaxyws.aircraftdemo.view.ActorModel;
-import com.galaxyws.aircraftdemo.view.ActorModel.Face;
+import com.galaxyws.aircraftdemo.util.pb.PBModel.BaseModel;
 
 public class TestOBJLoader {
 
@@ -23,7 +23,7 @@ public class TestOBJLoader {
 		File f = new File(fileName);
 		System.out.println(f.getPath());
 		if (f.exists()) {
-			ActorModel m = OBJLoader.loadTexturedModel(f);
+			RenderableModel m = OBJLoader.loadTexturedModel(f);
 			BaseModel.Builder pbm = BaseModel.newBuilder();
 					
 			List<Vector3f> vertices = m.getVertices();

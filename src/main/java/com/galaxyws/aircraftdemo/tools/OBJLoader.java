@@ -27,7 +27,7 @@
  * of the authors and should not be interpreted as representing official policies,
  * either expressed or implied, of the FreeBSD Project.
  */
-package com.galaxyws.aircraftdemo.util;
+package com.galaxyws.aircraftdemo.tools;
 
 
 import java.io.BufferedReader;
@@ -35,7 +35,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-import com.galaxyws.aircraftdemo.view.RenderableModel;
 
 
 /**
